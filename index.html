@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Phare Coffee and Tea</title>
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-brown: #7b4226;
+            --lighter-brown: #965a3e;
+            --accent-orange: #f28b4c;
+            --bg-color: #fdfaf6;
+            --text-color: #333333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        /* Header cuộn theo trang */
+        header {
+            position: relative;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)), url('./haidangg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 50px 15px;
+            text-align: center;
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .logo-container {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 12px auto;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        h1.brand-name {
+            color: var(--white);
+            font-size: 26px;
+            margin-bottom: 5px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+        }
+
+        p.slogan {
+            font-size: 13px;
+            color: #f0f0f0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        }
+
+        /* Container chính */
+        .main-wrapper {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Tiêu đề chung đồng bộ */
+        .section-title {
+            color: var(--primary-brown);
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        /* Phần gọi điện đặt hàng & Fanpage */
+        .contact-section {
+            background: var(--white);
+            padding: 22px 20px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0e6db;
+        }
+
+        .contact-section p {
+            font-size: 13px;
+            color: #666;
+            margin-top: -5px;
+            margin-bottom: 15px;
+        }
+
+        .contact-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 280px;
+            max-width: 100%;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .hotline-btn {
+            background-color: var(--lighter-brown);
+        }
+
+        .fb-btn {
+            background-color: #1877F2;
+        }
+
+        /* Phần đặt qua ứng dụng phân theo cơ sở */
+        .delivery-section {
+            background: var(--white);
+            padding: 25px 20px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0e6db;
+        }
+
+        .branch-group {
+            margin-bottom: 20px;
+        }
+
+        .branch-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .branch-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--secondary-brown, #9c6644);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .btn-grab { background-color: #00B14F; }
+        .btn-shopee { background-color: #EE4D2D; }
+        .btn-xanhsm { background-color: #54eaea; }
+
+        /* Khung chứa ảnh (Menu & Gallery) */
+        .card-section {
+            background: var(--white);
+            padding: 25px 20px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0e6db;
+            text-align: center;
+        }
+
+        .menu-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        /* Định dạng lại lưới ảnh dọc (Grid 2 cột đều đặn, chuyên nghiệp) */
+        .art-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .art-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background-color: #f5eedc;
+            aspect-ratio: 3 / 4; /* Tỷ lệ khung dọc chuẩn chỉnh */
+        }
+
+        .art-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Giúp ảnh lấp đầy khung dọc mà không bị méo */
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .art-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .art-caption {
+            background: rgba(123, 66, 38, 0.88);
+            color: var(--white);
+            padding: 8px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            font-size: 13px;
+            color: #888;
+            border-top: 1px solid #eee;
+            background-color: var(--white);
+            margin-top: 30px;
+        }
+
+        /* Responsive cho Mobile */
+        @media (max-width: 480px) {
+            .btn-group { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .art-gallery {
+                grid-template-columns: 1fr; /* Trên điện thoại thu gọn thành 1 cột dọc lớn */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header phông nền ngọn hải đăng cuộn theo trang -->
+    <header>
+        <div class="logo-container">
+            <img src="./lg.jpg" alt="Le Phare Logo">
+        </div>
+        <h1 class="brand-name">LE PHARE COFFEE & TEA</h1>
+        <p class="slogan">Base in Hải Phòng • Open: 08:00 - 22:00</p>
+    </header>
+
+    <div class="main-wrapper">
+        
+        <!-- Phần Kết Nối & Đặt Hàng -->
+        <section class="contact-section">
+            <h2 class="section-title">Đặt Hàng & Hỗ trợ</h2>
+            <p>Nhấc máy gọi ngay hoặc ghé thăm Fanpage của quán nhé!</p>
+            <div class="contact-btn-group">
+                <a href="tel:077.831.2623" class="action-btn hotline-btn">
+                    <i class="fa-solid fa-phone"></i> 077.831.2623
+                </a>
+                <a href="https://www.facebook.com/share/1C7pGFqnA5/?mibextid=wwXIfr" target="_blank" class="action-btn fb-btn">
+                    <i class="fa-brands fa-facebook"></i> Fanpage Le Phare
+                </a>
+            </div>
+        </section>
+
+        <!-- Đặt hàng qua app phân theo 2 cơ sở -->
+        <section class="delivery-section">
+            <h2 class="section-title">Đặt Hàng Qua Các Ứng Dụng</h2>
+            
+            <!-- Cơ sở 1: 198 Lê Lợi -->
+            <div class="branch-group">
+                <div class="branch-name"><i class="fa-solid fa-location-dot"></i> Cơ sở: 198 Lê Lợi</div>
+                <div class="btn-group">
+                    <a href="https://app.grab.com/s/b6biQHRU" target="_blank" class="btn btn-grab"><i class="fa-solid fa-utensils"></i> GrabFood</a>
+                    <a href="https://shopeefood.shopee.vn/u/KA1yjYJ" target="_blank" class="btn btn-shopee"><i class="fa-solid fa-bag-shopping"></i> ShopeeFood</a>
+                    <a href="https://xanhsmngon.onelink.me/14WJ/422hwo4l" target="_blank" class="btn btn-xanhsm"><i class="fa-solid fa-car"></i> Xanh SM</a>
+                </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px dashed #eee; margin: 15px 0;">
+
+            <!-- Cơ sở 2: 312 Nguyễn Công Hòa -->
+            <div class="branch-group">
+                <div class="branch-name"><i class="fa-solid fa-location-dot"></i> Cơ sở: 312 Nguyễn Công Hòa</div>
+                <div class="btn-group">
+                    <a href="https://app.grab.com/s/UjahC0rt" target="_blank" class="btn btn-grab"><i class="fa-solid fa-utensils"></i> GrabFood</a>
+                    <a href="https://shopeefood.shopee.vn/u/CE9gPWi" target="_blank" class="btn btn-shopee"><i class="fa-solid fa-bag-shopping"></i> ShopeeFood</a>
+                    <a href="https://xanhsmngon.onelink.me/14WJ/e6gduj7n" target="_blank" class="btn btn-xanhsm"><i class="fa-solid fa-car"></i> Xanh SM</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Quán -->
+        <section class="card-section">
+            <h2 class="section-title">Menu</h2>
+            <img src="./mn.jpg" alt="Menu Le Phare" class="menu-img">
+        </section>
+
+        <!-- Thức uống nổi bật (Đã đổi Hồng Trà Sữa và Oolong Nhài Sữa lên đầu) -->
+        <section class="card-section">
+            <h2 class="section-title">Góc Thức Uống Nhà Le Phare</h2>
+            <div class="art-gallery">
+                <div class="art-item">
+                    <img src="./ht.jpg" alt="Hồng trà">
+                    <div class="art-caption">Hồng Trà Sữa</div>
+                </div>
+                <div class="art-item">
+                    <img src="./ol.jpg" alt="Trà Olong nhài sữa">
+                    <div class="art-caption">Trà Oolong Nhài Sữa</div>
+                </div>
+                <div class="art-item">
+                    <img src="./cocbo.jpg" alt="Cốc Bơ Dừa">
+                    <div class="art-caption">Avocado Coconut (Sinh tố bơ dừa)</div>
+                </div>
+                <div class="art-item">
+                    <img src="./matcha.jpg" alt="Trà sữa Matcha">
+                    <div class="art-caption">Trà Sữa Matcha Lài</div>
+                </div>
+                <div class="art-item">
+                    <img src="./oldau.jpg" alt="Trà sữa Le Phare">
+                    <div class="art-caption">Trà Oolong Dâu</div>
+                </div>
+                <div class="art-item">
+                    <img src="./xoai.jpg" alt="Trà sữa xoài">
+                    <div class="art-caption">Lục Trà Sữa Xoài</div>
+                </div>
+                <div class="art-item">
+                    <img src="./modao.jpg" alt="Trà mơ đào">
+                    <div class="art-caption">Trà Oolong Mơ Đào</div>
+                </div>
+                <div class="art-item">
+                    <img src="./nho.jpg" alt="Trà sữa xoài">
+                    <div class="art-caption">Trà Nho Hoa Nhài</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Le Phare Coffee and Tea. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
